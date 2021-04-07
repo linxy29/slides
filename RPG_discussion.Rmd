@@ -1,0 +1,207 @@
+---
+title: "First Year RPG Discussion"
+#subtitle: "⚔<br/>with xaringan"
+author: "Xinyi Lin"
+institute: "Supervisor: Joshua Ho"
+date: "2021/03/31 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, chocolate-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Background & Research Goals
+
+* Challenges on single cell data analysis
+
+  + lack of accurate cell clustering method
+  
+  + hard to observe dynamic changes on different cell types
+
+  + inaccurate trajectory analysis
+
+  + needs of computational tools for different data types analysis
+  
+* PhD focus
+
+  statistical analysis for scalable single cell analysis
+  
+  + statistical modeling
+  
+  + single cell data analysis
+
+---
+
+# DCATS: Background
+
+* Tissues are cellular heterogeneity
+
+* Composition difference exists
+
+* Interested in changes of proportions in dynamic process
+
+```{r, out.height='10%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
+```
+
+---
+
+# DCATS: Design
+
+* R package designed for differential composition analysis on single cell data
+
+* Basic assumptions
+
+  + misclassification error exists
+
+  + cell counts follow binomial distribution
+  
+* Input
+
+  + cell counts matrices of samples coming from different conditions
+  
+  + a confusion matrix describing the misclassification error(user-input or calculated by DCATS)
+
+---
+
+# DCATS: Theoretical Simulation
+
+* Given a similarity matrix, only simulate cell count matrices
+
+* For each replicates:
+
+$$(p_1, p_2, p_3) \sim Dir(\alpha_1, \alpha_2, \alpha_3)$$
+
+$$(c_1, c_2, c_3) \sim multinomial(p_1,p_2,p_3|M_{sim})$$
+* Result
+
+```{r, out.width='80%', fig.align='center', echo=FALSE}
+#knitr::include_graphics(c('./image/RPG_discussion/test.png', './image/RPG_discussion/dcats_result1.png'))
+knitr::include_graphics('./image/RPG_discussion/dcats_result1.png')
+```
+
+---
+
+# DCATS: Simulation with Gene Expression Information
+
+* Simulation process 
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_sim.png')
+```
+
+---
+
+# DCATS: Simulation with Gene Expression Information
+
+* Simulation results
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
+```
+
+---
+
+# DCATS: Simulation with Gene Expression Information
+
+* Real world data analysis
+
+  + Give consistent conclusions as original papers:     *Kang, Hyun Min, et al, 2018* and *Haber, Adam L., et al, 2017*
+
+---
+
+# Current Projects: other side projects(will be updated)
+
+* Giant Cell Tumor of Bones(GCTB)
+
+  + a somatic alterations(*H3F3A*, Gly34Val): IGV, cellSNP
+  
+  + trajectory analysis
+  
+```{r, fig.align='center', fig.cap = "Trajectory of myeloid cells", echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/GCTB_res1.png')
+```
+
+---
+
+# Current Projects: other side projects(will be updated)
+
+* Mouse's Kidneys
+
+  + give a possible clustering result 
+  
+  + identify some cell types based on the clustering result
+  
+```{r, out.width='55%', fig.align='center', fig.cap = "Clustering result with notation", echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
+```
+
+---
+
+# Future Plan: current projects
+
+* DCATS: get it published
+
+* Side projects
+
+  + be familiar with computational tools related to scRNA-seq
+  
+  + finish related bioinformatics analysis
+  
+  + find out some new problems during collaboration
+  
+  + learn more biological knowledge
+
+---
+
+# Future Plan: exchange program
+
+* Time: whenever travel restriction eases
+
+* Duration: 3-6 months
+
+* Lab: [Xi Lab](https://sph.pku.edu.cn/info/1646/4192.htm), Peking University
+
+* Goals: Collaborate with people there on some scRNA-seq related projects
+
+---
+
+# Future Plan: Other possible projects
+
+* cross-species analysis
+
+* time-series analysis
+
+* other possible statistical modeling
+
+---
+
+# Acknowledge
+
+
+
+---
+
+# References
+
+```{r, load_refs, echo=FALSE,message=FALSE}
+library(RefManageR)
+bib <- ReadBib("./references.bib", check = FALSE)
+```
+
+```{r, print_refs, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
+print(bib, 
+  .opts = list(check.entries = FALSE, sorting = "none"))
+```
+
+---
+
+class: center, middle
+
+## Thanks!
+
+---
