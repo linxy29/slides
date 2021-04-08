@@ -182,7 +182,15 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 # Acknowledge
 
+* Dr. Joshua Ho
 
+* Other labmates on [Ho Lab, HKU](https://holab-hku.github.io/)
+
+* Dr. Yuanhua Huang and other people in [Huang Lab, HKU](https://web.hku.hk/~yuanhua/)
+
+* Shan Han from  Dr. Kelvin Cheung's lab
+
+* Professor Sydney Tang and postdoc Stella Yiu
 
 ---
 
@@ -203,5 +211,3 @@ print(bib,
 class: center, middle
 
 ## Thanks!
-
----
