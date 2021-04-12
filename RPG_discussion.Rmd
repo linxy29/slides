@@ -198,7 +198,7 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 ```{r, load_refs, echo=FALSE,message=FALSE}
 library(RefManageR)
-bib <- ReadBib("./references.bib", check = FALSE)
+bib <- ReadBib("./bibFiles/RPG_discussion.bib", check = FALSE)
 ```
 
 ```{r, print_refs, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
