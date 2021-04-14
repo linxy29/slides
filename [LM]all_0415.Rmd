@@ -48,7 +48,7 @@ knitr::include_graphics('./image/LM0415/GCTB_bg1.png')
 
 # Background(*)
 
-```{r, out.width='100%', fig.align='center', echo=FALSE}
+```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
 ```
 
@@ -64,7 +64,45 @@ Stromal Cells are neoplastic Cells in GCTB
 
 ---
 
-# Validate this mutation
+# Basic Information
+
+* 5 samples: L56, L67, L70, L71, L77
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_cluster.png')
+```
+
+---
+
+# Validate this mutation: IGV(*)
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_res1.png')
+```
+
+* reference genome: hg38
+
+* chr1:226,064,454 G->T
+
+* not all samples have this mutation
+
+  + L56: G(71%), T(29%); L70: G(65%), T(35%); L77: G(79%), T(21%)
+  
+  + L67: G(100%); L71: G(100%)
+
+---
+
+# Validate this mutation: cellSNP(*)
+
+* genotyping cells based on given variant list
+
+*a plot show proportion?*
+
+*results?*
+
+---
+
+# Trajectory Analysis
 
 ---
 class: inverse, center, middle
