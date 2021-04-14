@@ -24,7 +24,7 @@ class: inverse, center, middle
 
 ---
 
-# Background(*)
+# Background
 
 .pull-left[
 ```{r, out.width='100%', fig.align='center', echo=FALSE}
@@ -46,7 +46,7 @@ knitr::include_graphics('./image/LM0415/GCTB_bg1.png')
 
 ---
 
-# Background(*)
+# Background
 
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
@@ -74,7 +74,7 @@ knitr::include_graphics('./image/LM0415/GCTB_cluster.png')
 
 ---
 
-# Validate this mutation: IGV(*)
+# Validate this mutation: IGV
 
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_res1.png')
@@ -92,22 +92,23 @@ knitr::include_graphics('./image/LM0415/GCTB_res1.png')
 
 ---
 
-# Validate this mutation: cellSNP(*)
+# Validate this mutation: cellSNP
 
-* genotyping cells based on given variant list
+[cellSNP](https://pypi.org/project/cellSNP/): genotyping cells
 
-*a plot show proportion?*
+* Mode 1: pileup a list of SNPs for a single BAM/SAM file
 
-*results?*
+* Mode 2: pileup whole chromosome(s) for a single BAM/SAM file(bulk and scRNA-seq)
+
+* Mode 3: pileup a list of SNPs for one or multiple BAM/SAM files
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_res2.png')
+```
 
 ---
 
 # Trajectory Analysis
-
----
-class: inverse, center, middle
-
-# Kidney Project
 
 ---
 
