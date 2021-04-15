@@ -134,7 +134,7 @@ knitr::include_graphics('./image/LM0415/GCTB_res2.png')
 
 # Trajectory Analysis
 
-Monocle: based on similarity of different cell clusters[2]
+Monocle(2014): based on similarity of different cell clusters[2]
 
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_monocle.png')
@@ -145,14 +145,27 @@ knitr::include_graphics('./image/LM0415/GCTB_monocle.png')
 
 # Trajectory Analysis
 
-Velocyto: nascent (unspliced) vs mature (spliced) mRNA[3]
+nascent (unspliced) vs mature (spliced) mRNA
 
-* steady-state model(gene level):
+* Velocyto(2018): steady-state model(gene level)[3]:
 
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_velocyto.png')
 ```
 
+* scVelo(2020): a likelihood-based dynamical model[4]
+
+---
+
+# Trajectory Analysis
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_trj1.png')
+```
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_trj2.png')
+```
 
 ---
 
