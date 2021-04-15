@@ -34,6 +34,14 @@ knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
 ```
 
 ---
+
+# Real World Data
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
+```
+
+---
 class: inverse, center, middle
 
 # Giant Cell Tumor of Bone(GCTB)
@@ -131,6 +139,20 @@ Monocle: based on similarity of different cell clusters[2]
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_monocle.png')
 ```
+
+
+---
+
+# Trajectory Analysis
+
+Velocyto: nascent (unspliced) vs mature (spliced) mRNA[3]
+
+* steady-state model(gene level):
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_velocyto.png')
+```
+
 
 ---
 
