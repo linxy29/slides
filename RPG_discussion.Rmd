@@ -14,6 +14,12 @@ output:
       countIncrementalSlides: false
 ---
 
+<style>
+p.caption {
+  font-size: 0.8em;
+}
+</style>
+
 # Background & Research Goals
 
 * Challenges on single cell data analysis
@@ -79,7 +85,7 @@ $$(p_1, p_2, p_3) \sim Dir(\alpha_1, \alpha_2, \alpha_3)$$
 $$(c_1, c_2, c_3) \sim multinomial(p_1,p_2,p_3|M_{sim})$$
 * Result
 
-```{r, out.width='80%', fig.align='center', echo=FALSE}
+```{r, out.width='100%', fig.align='center', echo=FALSE}
 #knitr::include_graphics(c('./image/RPG_discussion/test.png', './image/RPG_discussion/dcats_result1.png'))
 knitr::include_graphics('./image/RPG_discussion/dcats_result1.png')
 ```
@@ -114,29 +120,59 @@ knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
 
 ---
 
-# Current Projects: other side projects(will be updated)
+# GCTB: Background
 
-* Giant Cell Tumor of Bones(GCTB)
+* Benign bone tumor
 
-  + a somatic alterations(*H3F3A*, Gly34Val): IGV, cellSNP
+* 3 Components:
+
+  + Osteoclast-like multinucleated giant cells
   
-  + trajectory analysis
+  + Mononuclear macrophage. 
   
-```{r, fig.align='center', fig.cap = "Trajectory of myeloid cells", echo=FALSE}
-knitr::include_graphics('./image/RPG_discussion/GCTB_res1.png')
+  + Spindle-shaped stromal cells(believed to be neoplastic cells)
+  
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
 ```
 
 ---
 
-# Current Projects: other side projects(will be updated)
+# GCTB: Validate one mutation
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_res1.png')
+```
+
+* L56: G(71%), T(29%); L70: G(65%), T(35%) 
+
+* L77: G(79%), T(21%); L67: G(100%); L71: G(100%)
+
+---
+
+# GCTB: Validate one mutation
+
+[cellSNP](https://pypi.org/project/cellSNP/): genotyping cells
+
+```{r, out.width='120%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0415/GCTB_res2.png')
+```
+
+---
+
+# Current Projects: other side projects
 
 * Mouse's Kidneys
+
+  Two samples: NK04, NK88('Trl4' knockout)
+
+* Clustering
 
   + give a possible clustering result 
   
   + identify some cell types based on the clustering result
   
-```{r, out.width='55%', fig.align='center', fig.cap = "Clustering result with notation", echo=FALSE}
+```{r, out.width='100%', fig.align='center', fig.cap = "Clustering result with&without notation", echo=FALSE}
 knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 ```
 
