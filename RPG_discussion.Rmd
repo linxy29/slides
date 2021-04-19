@@ -85,7 +85,7 @@ $$(p_1, p_2, p_3) \sim Dir(\alpha_1, \alpha_2, \alpha_3)$$
 $$(c_1, c_2, c_3) \sim multinomial(p_1,p_2,p_3|M_{sim})$$
 * Result
 
-```{r, out.width='100%', fig.align='center', echo=FALSE}
+```{r, out.width='55%', fig.align='center', echo=FALSE}
 #knitr::include_graphics(c('./image/RPG_discussion/test.png', './image/RPG_discussion/dcats_result1.png'))
 knitr::include_graphics('./image/RPG_discussion/dcats_result1.png')
 ```
@@ -106,17 +106,19 @@ knitr::include_graphics('./image/RPG_discussion/dcats_sim.png')
 
 * Simulation results
 
-```{r, out.width='90%', fig.align='center',echo=FALSE}
+```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
 ```
 
 ---
 
-# DCATS: Simulation with Gene Expression Information
+# DCATS: Real World Data Analysis
 
-* Real world data analysis
-
-  + Give consistent conclusions as original papers:     *Kang, Hyun Min, et al, 2018* and *Haber, Adam L., et al, 2017*
+Give consistent conclusions as original papers: *Kang, Hyun Min, et al, 2018* and *Haber, Adam L., et al, 2017*
+  
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
+```
 
 ---
 
@@ -160,13 +162,13 @@ knitr::include_graphics('./image/LM0415/GCTB_res2.png')
 
 ---
 
-# Current Projects: other side projects
+# Other side projects
 
 * Mouse's Kidneys
 
   Two samples: NK04, NK88('Trl4' knockout)
 
-* Clustering
+  Clustering
 
   + give a possible clustering result 
   
@@ -175,22 +177,6 @@ knitr::include_graphics('./image/LM0415/GCTB_res2.png')
 ```{r, out.width='100%', fig.align='center', fig.cap = "Clustering result with&without notation", echo=FALSE}
 knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 ```
-
----
-
-# Future Plan: current projects
-
-* DCATS: get it published
-
-* Side projects
-
-  + be familiar with computational tools related to scRNA-seq
-  
-  + finish related bioinformatics analysis
-  
-  + find out some new problems during collaboration
-  
-  + learn more biological knowledge
 
 ---
 
@@ -224,7 +210,7 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 * Dr. Yuanhua Huang and other people in [Huang Lab, HKU](https://web.hku.hk/~yuanhua/)
 
-* Shan Han from  Dr. Kelvin Cheung's lab
+* Shan HAN from  Dr. Kelvin Cheung's lab
 
 * Professor Sydney Tang and postdoc Stella Yiu
 
