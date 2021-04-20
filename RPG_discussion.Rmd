@@ -36,10 +36,10 @@ p.caption {
 
   statistical analysis for scalable single cell analysis
   
+  + single cell data analysis
+  
   + statistical modeling
   
-  + single cell data analysis
-
 ---
 
 # DCATS: Background
@@ -194,9 +194,15 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 # Future Plan: Other possible projects
 
-* cross-species analysis
-
 * time-series analysis
+
+  + single-cell experiment are snapshotof heterogeneous dynamic populations
+  
+  + dynamic range is limited
+  
+  + diffusion map is not adequate
+
+* cross-species analysis
 
 * other possible statistical modeling
 
@@ -210,7 +216,7 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 * Dr. Yuanhua Huang and other people in [Huang Lab, HKU](https://web.hku.hk/~yuanhua/)
 
-* Shan HAN from  Dr. Kelvin Cheung's lab
+* Shan Han from  Dr. Kelvin Cheung's lab
 
 * Professor Sydney Tang and postdoc Stella Yiu
 
