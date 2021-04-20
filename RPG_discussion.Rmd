@@ -23,8 +23,6 @@ p.caption {
 # Background & Research Goals
 
 * Challenges on single cell data analysis
-
-  + lack of accurate cell clustering method
   
   + hard to observe dynamic changes on different cell types
 
@@ -33,8 +31,6 @@ p.caption {
   + needs of computational tools for different data types analysis
   
 * PhD focus
-
-  statistical analysis for scalable single cell analysis
   
   + single cell data analysis
   
@@ -71,6 +67,8 @@ knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
   + cell counts matrices of samples coming from different conditions
   
   + a confusion matrix describing the misclassification error(user-input or calculated by DCATS)
+  
+
 
 ---
 
@@ -146,9 +144,9 @@ knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
 knitr::include_graphics('./image/LM0415/GCTB_res1.png')
 ```
 
-* L56: G(71%), T(29%); L70: G(65%), T(35%) 
+* L56: G(71%), T(29%); L70: G(65%), T(35%); L77: G(79%), T(21%)
 
-* L77: G(79%), T(21%); L67: G(100%); L71: G(100%)
+* L67: G(100%); L71: G(100%)
 
 ---
 
@@ -192,17 +190,19 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 ---
 
-# Future Plan: Other possible projects
+# Future Plan
 
 * time-series analysis
 
-  + single-cell experiment are snapshotof heterogeneous dynamic populations
+  + single-cell experiment are snapshot of heterogeneous dynamic populations
   
   + dynamic range is limited
   
-  + diffusion map is not adequate
-
-* cross-species analysis
+  + diffusion map[4,5] is not adequate
+  
+  + lack of methods to integrate data, link cells, combine with trajectory analysis based on velocity
+  
+* cross-species analysis[6]
 
 * other possible statistical modeling
 
@@ -239,3 +239,19 @@ print(bib,
 class: center, middle
 
 ## Thanks!
+
+---
+
+# Future Plan
+
+* cross-species analysis[6]
+
+  + human fetal liver, hepatocellular carcinoma(HCC), mouse models
+  
+  + two clusters in HCC exhibit remarkable similarity with embryonically seeded macrophages; indicating fetal-like re-programming of TAMs in HCC
+  
+  + cross-species comparative analysis: Garnett[7]
+  
+  + need well-annotated training data, disregard difference between species
+
+* other possible statistical modeling

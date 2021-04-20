@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # First Year RPG Discussion
 ### Xinyi Lin
 ### Supervisor: Joshua Ho
-### 2021/03/31 (updated: 2021-04-20)
+### 2021/03/31 (updated: 2021-04-21)
 
 ---
 
@@ -29,8 +29,6 @@ p.caption {
 # Background &amp; Research Goals
 
 * Challenges on single cell data analysis
-
-  + lack of accurate cell clustering method
   
   + hard to observe dynamic changes on different cell types
 
@@ -39,8 +37,6 @@ p.caption {
   + needs of computational tools for different data types analysis
   
 * PhD focus
-
-  statistical analysis for scalable single cell analysis
   
   + single cell data analysis
   
@@ -75,6 +71,8 @@ p.caption {
   + cell counts matrices of samples coming from different conditions
   
   + a confusion matrix describing the misclassification error(user-input or calculated by DCATS)
+  
+
 
 ---
 
@@ -137,9 +135,9 @@ Give consistent conclusions as original papers: *Kang, Hyun Min, et al, 2018* an
 
 &lt;img src="./image/LM0415/GCTB_res1.png" width="120%" style="display: block; margin: auto;" /&gt;
 
-* L56: G(71%), T(29%); L70: G(65%), T(35%) 
+* L56: G(71%), T(29%); L70: G(65%), T(35%); L77: G(79%), T(21%)
 
-* L77: G(79%), T(21%); L67: G(100%); L71: G(100%)
+* L67: G(100%); L71: G(100%)
 
 ---
 
@@ -182,17 +180,19 @@ Give consistent conclusions as original papers: *Kang, Hyun Min, et al, 2018* an
 
 ---
 
-# Future Plan: Other possible projects
+# Future Plan
 
 * time-series analysis
 
-  + single-cell experiment are snapshotof heterogeneous dynamic populations
+  + single-cell experiment are snapshot of heterogeneous dynamic populations
   
   + dynamic range is limited
   
-  + diffusion map is not adequate
-
-* cross-species analysis
+  + diffusion map[4,5] is not adequate
+  
+  + lack of methods to integrate data, link cells, combine with trajectory analysis based on velocity
+  
+* cross-species analysis[6]
 
 * other possible statistical modeling
 
@@ -228,11 +228,43 @@ _Nature biotechnology_ 36.1 (2018), p. 89.
 the small intestinal epithelium". In: _Nature_ 551.7680 (2017), pp.
 333-339.
 
+[4] L. Haghverdi, M. Büttner, F. A. Wolf, et al. "Diffusion pseudotime
+robustly reconstructs lineage branching". In: _Nature methods_ 13.10
+(2016), p. 845.
+
+[5] J. A. Farrell, Y. Wang, S. J. Riesenfeld, et al. "Single-cell
+reconstruction of developmental trajectories during zebrafish
+embryogenesis". In: _Science_ 360.6392 (2018).
+
+[6] A. Sharma, J. J. W. Seow, C. Dutertre, et al. "Onco-fetal
+reprogramming of endothelial cells drives immunosuppressive macrophages
+in hepatocellular carcinoma". In: _Cell_ 183.2 (2020), pp. 377-394.
+
+[7] H. A. Pliner, J. Shendure, and C. Trapnell. "Supervised
+classification enables rapid annotation of cell atlases". In: _Nature
+methods_ 16.10 (2019), pp. 983-986.
+
 ---
 
 class: center, middle
 
 ## Thanks!
+
+---
+
+# Future Plan
+
+* cross-species analysis[6]
+
+  + human fetal liver, hepatocellular carcinoma(HCC), mouse models
+  
+  + two clusters in HCC exhibit remarkable similarity with embryonically seeded macrophages; indicating fetal-like re-programming of TAMs in HCC
+  
+  + cross-species comparative analysis: Garnett[7]
+  
+  + need well-annotated training data, disregard difference between species
+
+* other possible statistical modeling
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
