@@ -112,7 +112,7 @@ knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
 
 # DCATS: Real World Data Analysis
 
-Give consistent conclusions as original papers: *Kang, Hyun Min, et al, 2018* and *Haber, Adam L., et al, 2017*
+Give consistent conclusions as original papers[2,3]
   
 ```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
@@ -122,15 +122,15 @@ knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
 
 # GCTB: Background
 
-* Benign bone tumor
+* Gaint Cell Tumor of Bone(GCTB): Benign bone tumor
 
-* 3 Components:
+* Three components:
 
-  + Osteoclast-like multinucleated giant cells
+  + osteoclast-like multinucleated giant cells
   
-  + Mononuclear macrophage. 
+  + mononuclear macrophage. 
   
-  + Spindle-shaped stromal cells(believed to be neoplastic cells)
+  + spindle-shaped stromal cells(believed to be neoplastic cells)
   
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
@@ -138,7 +138,7 @@ knitr::include_graphics('./image/LM0415/GCTB_bg2.png')
 
 ---
 
-# GCTB: Validate one mutation
+# GCTB: Validate the Mutation
 
 ```{r, out.width='120%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0415/GCTB_res1.png')
@@ -150,7 +150,7 @@ knitr::include_graphics('./image/LM0415/GCTB_res1.png')
 
 ---
 
-# GCTB: Validate one mutation
+# GCTB: Validate the mutation
 
 [cellSNP](https://pypi.org/project/cellSNP/): genotyping cells
 
@@ -160,13 +160,11 @@ knitr::include_graphics('./image/LM0415/GCTB_res2.png')
 
 ---
 
-# Other side projects
+# Mouse's Kidneys
 
-* Mouse's Kidneys
+Two samples: NK04, NK88('Trl4' knockout)
 
-  Two samples: NK04, NK88('Trl4' knockout)
-
-  Clustering
+Clustering
 
   + give a possible clustering result 
   
@@ -178,7 +176,7 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 ---
 
-# Future Plan: exchange program
+# Future Plan: Exchange Program
 
 * Time: whenever travel restriction eases
 
@@ -186,13 +184,13 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
 
 * Lab: [Xi Lab](https://sph.pku.edu.cn/info/1646/4192.htm), Peking University
 
-* Goals: Collaborate with people there on some scRNA-seq related projects
+* Collaborate with people there on some scRNA-seq related projects
 
 ---
 
 # Future Plan
 
-* time-series analysis
+* Time-series analysis
 
   + single-cell experiment are snapshot of heterogeneous dynamic populations
   
@@ -202,9 +200,9 @@ knitr::include_graphics('./image/RPG_discussion/kidney_res1.jpg')
   
   + lack of methods to integrate data, link cells, combine with trajectory analysis based on velocity
   
-* cross-species analysis[6]
+* Cross-species analysis[6]
 
-* other possible statistical modeling
+* Other possible statistical modeling
 
 ---
 
@@ -244,7 +242,7 @@ class: center, middle
 
 # Future Plan
 
-* cross-species analysis[6]
+* Cross-species analysis[6]
 
   + human fetal liver, hepatocellular carcinoma(HCC), mouse models
   
@@ -254,4 +252,4 @@ class: center, middle
   
   + need well-annotated training data, disregard difference between species
 
-* other possible statistical modeling
+* Other possible statistical modeling
