@@ -44,11 +44,15 @@ knitr::include_graphics('./image/RPG_discussion/workflow.jpg')
 
 * driven by subsets of tumor cells -> crucial to learn single cell level genomic information
 
-
 ---
 
-# 
+# Bioinformatics Analysis: clustering
 
+```{r, out.width='65%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/MMPH6140/clustering.png')
+```
+
+.footnote["Challenges in unsupervised clustering of single-cell RNA-seq data."]
 ---
 
 # References
