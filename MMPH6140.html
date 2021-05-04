@@ -15,24 +15,24 @@ class: center, middle, inverse, title-slide
 # Single-Cell RNA Sequencing in Cancer
 ### Xinyi Lin
 ### Supervisor: Joshua Ho
-### 2021/04/30 (updated: 2021-05-03)
+### 2021/04/30 (updated: 2021-05-04)
 
 ---
 
 
-# RNA sequencing(RNA-seq)
+# RNA Sequencing(RNA-seq)
 
 &lt;img src="./image/MMPH6140/RNAseq.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Single-cell RNA sequencing(scRNA-seq)
+# Single-cell RNA Sequencing(scRNA-seq)
 
 &lt;img src="./image/RPG_discussion/workflow.jpg" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Expression intra-tumor heterogeneity (eITH)
+# Expression Intra-tumor Heterogeneity (eITH)
 
 * caused by genomic instability
 
@@ -48,11 +48,69 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Bioinformatics Analysis: clustering
+# Bioinformatics Analysis
 
-&lt;img src="./image/MMPH6140/clustering.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/MMPH6140/pipelines.jpg" width="55%" style="display: block; margin: auto;" /&gt;
 
-.footnote["Challenges in unsupervised clustering of single-cell RNA-seq data."]
+---
+
+# Example: bladder urothelial carcinoma
+
+* one of the most prevalent uro-genital malignant disease
+
+* healthy cells(urothelial cells) in the bladder lining change and grow out of control
+
+* designing new treatment strategies for BC is challenging
+
+  + one of the least immune infiltrated cancers 
+  
+  + poor response to anti-PD1 therapy
+
+---
+
+# Example: bladder urothelial carcinoma[4]
+
+* overall
+
+* 2 low-grade bladder urothelial tumors; 6 high-grade bladder urothelial tumors; 3 adjacent normal mucosae
+
+* iCAFs: inflammatory cancer-associated fibroblasts; mCAF: myo-CAFs
+
+&lt;img src="./image/MMPH6140/res1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Example: bladder urothelial carcinoma[4]
+
+* EPCAM+ epithelial cells(EPCs)
+
+* CNVs accumulated in most high-grade tumor-derived EPCs
+
+* showed high heterogeneity among clusters
+
+* some cells from tumor tissue possessed almost no CNV and showed a similar expression pattern to normal EPCs -&gt; non-malignant EPCs.
+
+&lt;img src="./image/MMPH6140/res2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Example: bladder urothelial carcinoma[4]
+
+* myeloid cells
+
+* monocytes recruited into the tumor region were reprogrammed into tumor-associated macrophages(TAMs)
+  + monocytes mostly originated from normal mucosal tissues, while TAMs were enriched in BC tissues
+  + the transcriptomes of these two cell types exhibited continual changes
+  + confirmed by trajectory analysis
+
+&lt;img src="./image/MMPH6140/res3.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+## Thanks!
+
 ---
 
 # References
@@ -70,6 +128,26 @@ _Communications biology_ 3.1 (2020), pp. 1-19.
 [3] V. Y. Kiselev, T. S. Andrews, and M. Hemberg. "Challenges in
 unsupervised clustering of single-cell RNA-seq data". In: _Nature
 Reviews Genetics_ 20.5 (2019), pp. 273-282.
+
+[4] Z. Chen, L. Zhou, L. Liu, et al. "Single-cell RNA sequencing
+highlights the role of inflammatory cancer-associated fibroblasts in
+bladder urothelial carcinoma". In: _Nature communications_ 11.1 (2020),
+pp. 1-12.
+
+---
+
+# Bioinformatics Analysis: clustering
+
+&lt;img src="./image/MMPH6140/clustering.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+.footnote["Challenges in unsupervised clustering of single-cell RNA-seq data."]
+---
+
+# Bioinformatics Analysis: clustering
+
+&lt;img src="./image/MMPH6140/multidata clustering.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.footnote["Challenges in unsupervised clustering of single-cell RNA-seq data."]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
