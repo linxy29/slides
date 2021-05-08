@@ -41,4 +41,55 @@ $m_{ij}$ denotes the probability of a cell $c$ in type $i$ be assigned to type $
 
 Two procedures:
 
-* Expectation-Maximization Elgorithm
+* Expectation–maximization(EM) algorithm
+
+* Sampling based on the true proportion vector
+
+---
+
+# Expectation–maximization(EM) algorithm
+
+an approach for maximum likelihood estimation in the presence of latent variables
+
+$$l(\theta,\mathbf{Y}) = l(\theta, Y_{obs}, Z)$$
+
+* E-Step: Estimate the missing variables in the dataset.
+
+$$Q(\theta, \theta^{(t)}) = Ez[l(\theta, Y_{obs}, Z)|Y_{obs}, \theta^{(t)}]$$
+
+* M-Step: Maximize the parameters of the model in the presence of the data.
+
+$$\theta^{(t+1)} = arg\,max_{\theta}\,Q(\theta, \theta^{(t)})$$
+
+---
+
+# Bias Correction: EM part
+
+$$\begin{split}
+		\mathcal{L(\mu)} & = P(x | \mu, M)
+		= \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[\sum_{i=1}^{K} P(I_c=i|\mu) P(A_c=j|I_c=i) \right]\\
+		& =  \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right] 
+		= \prod_{j=1}^{K} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right]^{x_j} 
+		= \prod_{j=1}^{K} \nu_j^{x_j},
+	\end{split}$$
+
+$\mu$ denotes unknown cell type composition vector, $x$ denotes observing cell counts vector
+
+$$z_{i,j} = P(I_c=j|A_c=i) = 
+	\frac{P(A_c=i|I_c=j)P(I_c=j|\mu)}
+	{\sum_{t=1}^{K} P(A_c=i|I_c=t)P(I_c=t|\mu)}
+	= \frac{m_{j,i} \mu_j}{\sum_{t=1}^{K} m_{t,i}\mu_t}$$
+
+Through maximize $log\,\mathcal{L(z)}$, we can get $$\mu_j = \frac{\sum_{i=1}^{K}z_{i,j} x_i}{\sum_{t=1}^{K}\sum_{i=1}^{K}z_{i,t} x_i}$$
+
+---
+
+# Bias Correction: Sampling process
+
+$$g_{i} \sim Multinomial(\mu, M)$$
+
+$g_{i}$ denotes the $i$th sampled vector following multinomial distribution with size $\mu$ and probability $M$
+
+---
+
+# Model: GLM
