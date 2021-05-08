@@ -92,4 +92,5 @@ $g_{i}$ denotes the $i$th sampled vector following multinomial distribution with
 
 ---
 
-# Model: GLM
+# Model: Betabin GLM
+
