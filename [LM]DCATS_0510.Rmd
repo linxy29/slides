@@ -1,0 +1,44 @@
+---
+title: "DCATS: Differential Composition Analysis Transformed by a Similarity matrix in single-cell data"
+#subtitle: "⚔<br/>with xaringan"
+author: "Xinyi Lin"
+#institute: "Supervisor: Joshua Ho"
+date: "2021/05/8 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, chocolate-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Workflow
+
+```{r, out.width='100%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0510/overall.png')
+```
+
+Two main hypotheses:
+
+* the clustering step is often inaccurate and may be systematically biased
+
+* the reads counts follow beta-binomial distribution 
+
+---
+
+# Bias Correction
+
+\begin{bmatrix}
+    m_{AA}       & m_{AB} & \dots & m_{AK} \\
+    m_{BA}       & m_{BB} & \dots & m_{BK} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    m_{KA}       & m_{KB} & \dots & m_{KK}
+\end{bmatrix}
+
+$m_{ij}$ denotes the probability of a cell $c$ in type $i$ be assigned to type $j$ by the clustering method
+
+Two procedures:
+
+* Expectation-Maximization Elgorithm
