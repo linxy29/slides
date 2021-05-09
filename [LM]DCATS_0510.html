@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # DCATS: Differential Composition Analysis Transformed by a Similarity matrix in single-cell data
 ### Xinyi Lin
-### 2021/05/8 (updated: 2021-05-08)
+### 2021/05/8 (updated: 2021-05-09)
 
 ---
 
@@ -50,7 +50,7 @@ Two procedures:
 
 ---
 
-# Expectation–maximization(EM) algorithm
+# Expectation–maximization(EM) Algorithm
 
 an approach for maximum likelihood estimation in the presence of latent variables
 
@@ -66,14 +66,13 @@ an approach for maximum likelihood estimation in the presence of latent variable
 
 ---
 
-# Bias Correction: EM part
+# Bias Correction: EM Part
 
 `$$\begin{split}
 		\mathcal{L(\mu)} &amp; = P(x | \mu, M)
 		= \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[\sum_{i=1}^{K} P(I_c=i|\mu) P(A_c=j|I_c=i) \right]\\
 		&amp; =  \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right] 
 		= \prod_{j=1}^{K} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right]^{x_j} 
-		= \prod_{j=1}^{K} \nu_j^{x_j},
 	\end{split}$$`
 
 `\(\mu\)` denotes unknown cell type composition vector, `\(x\)` denotes observing cell counts vector
@@ -87,7 +86,7 @@ Through maximize `\(log\,\mathcal{L(z)}\)`, we can get `$$\mu_j = \frac{\sum_{i=
 
 ---
 
-# Bias Correction: Sampling process
+# Bias Correction: Sampling Process
 
 `$$g_{i} \sim Multinomial(\mu, M)$$`
 
@@ -95,7 +94,61 @@ Through maximize `\(log\,\mathcal{L(z)}\)`, we can get `$$\mu_j = \frac{\sum_{i=
 
 ---
 
-# Model: GLM
+# Generalized Linear Models (GLMs)
+
+Simple Linear Regression:
+
+`$$E(Y) = \beta_0 + \beta\mathbf{X}$$`
+
+* Random component: `\(Y\)`
+
+* Systematic component: `\(\mathbf{X}\)`
+
+* Link function: `\(E(Y_i)\)`
+
+&lt;br/&gt;
+
+Generalized Linear Models:
+
+`$$g(\mu) = \beta_0 + \beta\mathbf{X}$$`
+
+---
+
+# Model: Betabin GLM
+
+A beta-binomial distirbution:
+
+`$$P(Y=y|n,p) = \left(\begin{array}{c}n \\y \end{array} \right) = p^y(1-p)^{n-y}$$`
+`$$f(p|a,b) = \frac{1}{B(a,b)}p^{a-1}(1-p)^{b-1}$$`
+
+`$$E(Y|n,a,b) = E[E(Y|n,a,b,p)] = \frac{na}{a+b}$$`
+
+`$$Var(Y|n,a,b) = E[Var(Y|n,a,b,p)] + Var[E(Y|n,a,b,p)] = \frac{nab(a+b+n)}{(a+b)^2(a+b+1)}$$`
+Let `$$\pi = \frac{a}{a+b}, \phi = \frac{1}{a+b+1}$$`then `$$E(Y|n,\pi,\phi) = n\pi, Var(Y|n,\pi,\phi) = n\pi(1-\pi)[1+(n-1)\times\phi]$$`
+
+---
+
+# Model: Likelihood Ratio Test
+
+---
+
+# Theoretical Simulation
+
+&lt;img src="./image/LM0510/res1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# scRNA-seq Simulation
+
+&lt;img src="./image/RPG_discussion/dcats_result2.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Real World Data Analysis
+
+Give consistent conclusions as original papers[2,3]
+  
+&lt;img src="./image/LM0415/DCATS_fig1C.png" width="100%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
