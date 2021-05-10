@@ -3,7 +3,7 @@ title: "DCATS: Differential Composition Analysis Transformed by a Similarity mat
 #subtitle: "⚔<br/>with xaringan"
 author: "Xinyi Lin"
 #institute: "Supervisor: Joshua Ho"
-date: "2021/05/8 (updated: `r Sys.Date()`)"
+date: "2021/05/08 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, chocolate-fonts]
@@ -182,3 +182,9 @@ Give consistent conclusions as original papers
 ```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
 ```
+
+---
+
+class: center, middle
+
+## Thanks!
