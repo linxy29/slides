@@ -14,6 +14,14 @@ output:
       countIncrementalSlides: false
 ---
 
+# Motivation
+
+```{r, out.height='10%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
+```
+
+---
+
 # Workflow
 
 ```{r, out.width='100%', fig.align='center', echo=FALSE}
@@ -43,13 +51,13 @@ Two procedures:
 
 * Expectation–maximization(EM) algorithm
 
-* Sampling based on the true proportion vector
+* Sampling based on the true proportions
 
 ---
 
 # Expectation–maximization(EM) Algorithm
 
-an approach for maximum likelihood estimation in the presence of latent variables
+An approach for maximum likelihood estimation in the presence of latent variables
 
 $$l(\theta,\mathbf{Y}) = l(\theta, Y_{obs}, Z)$$
 
@@ -73,6 +81,8 @@ $$\begin{split}
 	\end{split}$$
 
 $\mu$ denotes unknown cell type composition vector, $x$ denotes observing cell counts vector
+
+Introducing a latent variable $z_{i,j}$ denoting the expected probability of clustered cell type $i$ coming from the real cell type $j$.
 
 $$z_{i,j} = P(I_c=j|A_c=i) = 
 	\frac{P(A_c=i|I_c=j)P(I_c=j|\mu)}
@@ -125,7 +135,27 @@ Let $$\pi = \frac{a}{a+b}, \phi = \frac{1}{a+b+1}$$then $$E(Y|n,\pi,\phi) = n\pi
 
 ---
 
-# Model: Likelihood Ratio Test
+# Likelihood Ratio Test
+
+Model with condition:
+
+$$g(\mu) = \beta_0+\beta_1*condition$$
+
+<br/>
+
+$$H_0: \beta_1 = 0, H_1:\beta_1 \neq 0$$
+
+$$\lambda_{LR} = -2[l(\theta_0)-l(\hat\theta)]$$
+under the null hypothesis
+
+$$\lambda_{LR} \sim \chi^2$$
+---
+
+# Simulation Design
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0510/dcats_simAll.png')
+```
 
 ---
 
@@ -147,7 +177,7 @@ knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
 
 # Real World Data Analysis
 
-Give consistent conclusions as original papers[2,3]
+Give consistent conclusions as original papers
   
 ```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
