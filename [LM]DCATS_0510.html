@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # DCATS: Differential Composition Analysis Transformed by a Similarity matrix in single-cell data
 ### Xinyi Lin
-### 2021/05/08 (updated: 2021-05-10)
+### 2021/05/08 (updated: 2021-05-15)
 
 ---
 
@@ -150,6 +150,25 @@ Model with condition:
 under the null hypothesis
 
 `$$\lambda_{LR} \sim \chi^2$$`
+---
+
+# Confusion matrix
+
+* Uniform type: 
+
+`\begin{bmatrix}
+    a       &amp; (1-a)/(K-1) &amp; \dots &amp; (1-a)/(K-1) \\
+    (1-a)/(K-1)  &amp;   a &amp; \dots &amp; (1-a)/(K-1) \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    (1-a)/(K-1)  &amp;   (1-a)/(K-1) &amp; \dots &amp; a
+\end{bmatrix}`
+
+* KNN type: `\(m_{ij}\)` = # of cluster `\(i\)`'s neighborhoods `\(\in\)` cluster `\(j\)`
+
+* SVM type: 
+
+&lt;img src="./image/LM0510/5foldCV.png" width="60%" style="display: block; margin: auto;" /&gt;
+
 ---
 
 # Simulation Design

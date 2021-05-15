@@ -151,6 +151,27 @@ under the null hypothesis
 $$\lambda_{LR} \sim \chi^2$$
 ---
 
+# Confusion matrix
+
+* Uniform type: 
+
+\begin{bmatrix}
+    a       & (1-a)/(K-1) & \dots & (1-a)/(K-1) \\
+    (1-a)/(K-1)  &   a & \dots & (1-a)/(K-1) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    (1-a)/(K-1)  &   (1-a)/(K-1) & \dots & a
+\end{bmatrix}
+
+* KNN type: $m_{ij}$ = # of cluster $i$'s neighborhoods $\in$ cluster $j$
+
+* SVM type: 
+
+```{r, out.width='60%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0510/5foldCV.png')
+```
+
+---
+
 # Simulation Design
 
 ```{r, out.width='90%', fig.align='center',echo=FALSE}
