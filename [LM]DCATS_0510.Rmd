@@ -3,7 +3,7 @@ title: "DCATS: Differential Composition Analysis Transformed by a Similarity mat
 #subtitle: "⚔<br/>with xaringan"
 author: "Xinyi Lin"
 #institute: "Supervisor: Joshua Ho"
-date: "2021/05/8 (updated: `r Sys.Date()`)"
+date: "2021/05/08 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, chocolate-fonts]
@@ -12,6 +12,14 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+---
+
+# Motivation
+
+```{r, out.height='10%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
+```
+
 ---
 
 # Workflow
@@ -43,13 +51,13 @@ Two procedures:
 
 * Expectation–maximization(EM) algorithm
 
-* Sampling based on the true proportion vector
+* Sampling based on the true proportions
 
 ---
 
-# Expectation–maximization(EM) algorithm
+# Expectation–maximization(EM) Algorithm
 
-an approach for maximum likelihood estimation in the presence of latent variables
+An approach for maximum likelihood estimation in the presence of latent variables
 
 $$l(\theta,\mathbf{Y}) = l(\theta, Y_{obs}, Z)$$
 
@@ -63,17 +71,18 @@ $$\theta^{(t+1)} = arg\,max_{\theta}\,Q(\theta, \theta^{(t)})$$
 
 ---
 
-# Bias Correction: EM part
+# Bias Correction: EM Part
 
 $$\begin{split}
 		\mathcal{L(\mu)} & = P(x | \mu, M)
 		= \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[\sum_{i=1}^{K} P(I_c=i|\mu) P(A_c=j|I_c=i) \right]\\
 		& =  \prod_{j=1}^{K} \prod_{c=1}^{x_j} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right] 
 		= \prod_{j=1}^{K} \left[ \sum_{i=1}^{K} \mu_i m_{i,j} \right]^{x_j} 
-		= \prod_{j=1}^{K} \nu_j^{x_j},
 	\end{split}$$
 
 $\mu$ denotes unknown cell type composition vector, $x$ denotes observing cell counts vector
+
+Introducing a latent variable $z_{i,j}$ denoting the expected probability of clustered cell type $i$ coming from the real cell type $j$.
 
 $$z_{i,j} = P(I_c=j|A_c=i) = 
 	\frac{P(A_c=i|I_c=j)P(I_c=j|\mu)}
@@ -84,7 +93,7 @@ Through maximize $log\,\mathcal{L(z)}$, we can get $$\mu_j = \frac{\sum_{i=1}^{K
 
 ---
 
-# Bias Correction: Sampling process
+# Bias Correction: Sampling Process
 
 $$g_{i} \sim Multinomial(\mu, M)$$
 
@@ -92,5 +101,111 @@ $g_{i}$ denotes the $i$th sampled vector following multinomial distribution with
 
 ---
 
+# Generalized Linear Models (GLMs)
+
+Simple Linear Regression:
+
+$$E(Y) = \beta_0 + \beta\mathbf{X}$$
+
+* Random component: $Y$
+
+* Systematic component: $\mathbf{X}$
+
+* Link function: $E(Y_i)$
+
+<br/>
+
+Generalized Linear Models:
+
+$$g(\mu) = \beta_0 + \beta\mathbf{X}$$
+
+---
+
 # Model: Betabin GLM
 
+A beta-binomial distirbution:
+
+$$P(Y=y|n,p) = \left(\begin{array}{c}n \\y \end{array} \right) = p^y(1-p)^{n-y}$$
+$$f(p|a,b) = \frac{1}{B(a,b)}p^{a-1}(1-p)^{b-1}$$
+
+$$E(Y|n,a,b) = E[E(Y|n,a,b,p)] = \frac{na}{a+b}$$
+
+$$Var(Y|n,a,b) = E[Var(Y|n,a,b,p)] + Var[E(Y|n,a,b,p)] = \frac{nab(a+b+n)}{(a+b)^2(a+b+1)}$$
+Let $$\pi = \frac{a}{a+b}, \phi = \frac{1}{a+b+1}$$then $$E(Y|n,\pi,\phi) = n\pi, Var(Y|n,\pi,\phi) = n\pi(1-\pi)[1+(n-1)\times\phi]$$
+
+---
+
+# Likelihood Ratio Test
+
+Model with condition:
+
+$$g(\mu) = \beta_0+\beta_1*condition$$
+
+<br/>
+
+$$H_0: \beta_1 = 0, H_1:\beta_1 \neq 0$$
+
+$$\lambda_{LR} = -2[l(\theta_0)-l(\hat\theta)]$$
+under the null hypothesis
+
+$$\lambda_{LR} \sim \chi^2$$
+---
+
+# Confusion matrix
+
+* Uniform type: 
+
+\begin{bmatrix}
+    a       & (1-a)/(K-1) & \dots & (1-a)/(K-1) \\
+    (1-a)/(K-1)  &   a & \dots & (1-a)/(K-1) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    (1-a)/(K-1)  &   (1-a)/(K-1) & \dots & a
+\end{bmatrix}
+
+* KNN type: $m_{ij}$ = # of cluster $i$'s neighborhoods $\in$ cluster $j$
+
+* SVM type: 
+
+```{r, out.width='60%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0510/5foldCV.png')
+```
+
+---
+
+# Simulation Design
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0510/dcats_simAll.png')
+```
+
+---
+
+# Theoretical Simulation
+
+```{r, out.width='100%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0510/res1.png')
+```
+
+---
+
+# scRNA-seq Simulation
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/RPG_discussion/dcats_result2.png')
+```
+
+---
+
+# Real World Data Analysis
+
+Give consistent conclusions as original papers
+  
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/LM0415/DCATS_fig1C.png')
+```
+
+---
+
+class: center, middle
+
+## Thanks!
