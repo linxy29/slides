@@ -15,18 +15,170 @@ class: center, middle, inverse, title-slide
 # Diffusion Map on Single-cell Time Series Data Analysis
 ### Xinyi Lin
 ### Supervisor: Joshua Ho
-### 2021/05/22 (updated: 2021-05-23)
+### 2021/05/22 (updated: 2021-05-24)
 
 ---
 
 
-background diffusion matrix time-series data
+&lt;style&gt;
+p.caption {
+  font-size: 0.6em;
+}
+&lt;/style&gt;
 
-connection
+# Time Series Data
+
+* data collected at different points in time(day1, day2, day3, day7......)
+
+* some characteristics
+
+  + potential for correlation between observations
+  
+  + regularly repeating pattern
+  
+&lt;img src="./image/JC0522/time_series.png" width="85%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Haghverdi 2016: Results
+# Time Series Data
+
+* data collected at different points in time(day1, day2, day3, day7......)
+
+* some characteristics
+
+  + potential for correlation between observations
+  
+  + regularly repeating pattern
+  
+&lt;img src="./image/JC0522/time_series2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Diffusion Map
+
+* dimensionality reduction/feature extraction algorithm
+
+---
+
+# Diffusion Map: Dimensionality Reduction
+
+&lt;img src="./image/JC0522/difussion1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;br/&gt;
+
+.pull-left[
+&lt;img src="./image/JC0522/difussion2.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+* raw data are sparse
+
+* save computational resources
+
+* visualization
+]
+
+&lt;br/&gt;
+
+&lt;p style="font-family: times, serif; font-size:11pt; font-style:italic"&gt;
+Engel, D., Hüttenberger, L., &amp; Hamann, B. (2012). A survey of dimension reduction methods for high-dimensional data analysis and visualization.
+&lt;/p&gt;
+
+---
+
+# Diffusion Map
+
+* dimensionality reduction/feature extraction algorithm
+
+* coordinates can be computed from the eigenvectors and eigenvalues of a diffusion operator on the data(non-linear version of PCA)
+
+---
+
+# Diffusion Map: non-linear version of PCA
+
+PCA: creating new uncorrelated variables that successively maximize variance
+
+.pull-left[
+&lt;img src="./image/JC0522/difussion3.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+* picked first few eigenvectors and eigenvalues
+
+* computed coordinates from them
+
+* projected to those coordinates
+]
+
+&lt;br/&gt;
+
+-&gt; robust to noise perturbation
+
+---
+
+# Diffusion Map
+
+* dimensionality reduction/feature extraction algorithm
+
+* coordinates can be computed from the eigenvectors and eigenvalues of a diffusion operator on the data(non-linear version of PCA)
+
+* the Euclidean distance between points in the embedded space is equal to the "diffusion distance" between probability distributions centered at those points
+
+
+---
+
+# Diffusion Map: Diffusion Framework
+
+euclidean distance &lt;-&gt; difussion distance
+
+.pull-left[
+&lt;img src="./image/JC0522/difussion4.svg" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+* running the chain forward in time geometric structure at larger and larger scales (the diffusion process)
+
+* the notion of a cluster in the data set is quantified as a region in which the probability of escaping this region is low (within a certain time t)
+
+* taking into account all linking between points, describing a global picture
+
+]
+
+---
+
+# Diffusion Map
+
+* dimensionality reduction/feature extraction algorithm
+
+* coordinates can be computed from the eigenvectors and eigenvalues of a diffusion operator on the data(non-linear version of PCA)
+
+* the Euclidean distance between points in the embedded space is equal to the "diffusion distance" between probability distributions centered at those points
+
+* advantages:
+
+  + robust to noise perturbation
+  
+  + emphasizing the concept of a cluster
+  
+  + computationally inexpensive
+
+---
+
+# Haghverdi 2016[2]: Model Design
+
+* use Gaussians kernel to build the transition matrix
+
+* use discrete random walks and graph searches to approximate the continuous process of diffusion
+
+&lt;img src="./image/JC0522/paper1model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="./image/JC0522/paper1model2.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Haghverdi 2016[2]: Results
 
 * Simulation study of robustness:
 
@@ -34,7 +186,68 @@ connection
   
   + Kendall-tau correlation of each two bootstrap data sets
 
-&lt;img src="./image/JC0522/paper1res.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/JC0522/paper1res.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Haghverdi 2016[2]: Results
+
+* fig d: single-cell RNA (scRNA)-seq data of mouse  embryonic  stem  (ES)  cells  after leukemia inhibitory factor (LIF) withdrawal[3]
+
+* fig f: an adult hematopoiesis scRNA-seq data set[4]
+
+&lt;img src="./image/JC0522/paper1res2.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Farrell 2018[5]: Model Design
+
+* use k-nearest-neighbor graph to build the transition matrix
+
+* use discrete random walks and graph searches to approximate the continuous process of diffusion
+
+&lt;img src="./image/JC0522/paper2model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+*"the walks are biased to only transitionto cells of equal or earlier pseudotime so thatwhen they reach developmental branch points,they proceed toward the root and do not explore other cell types"*
+
+---
+
+# Farrell 2018[5]: Results
+
+* 38,731 cells; 694 embryos; 
+
+* 12 closely spaced stages of early zebrafish development(high blastula stage -&gt; six-somite stage)
+
+&lt;img src="./image/JC0522/paper2res.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Farrell 2018[5]: Results
+
+&lt;img src="./image/JC0522/paper2res2.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+???
+recapitulated the developmental trajectories expected from classical embryological studies; found out some new branches
+
+---
+
+# Farrell 2018[5]: Results
+
+&lt;img src="./image/JC0522/paper2res3.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Some Random Thoughts
+
+* add pesudo-correlation within cells between different time point
+
+* combine with RNA velocity -&gt; a new embedded space
+
+---
+
+class: center, middle
+
+## Thanks!
 
 ---
 
@@ -51,7 +264,15 @@ Diffusion maps". In: _Proceedings of the national academy of sciences_
 robustly reconstructs lineage branching". In: _Nature methods_ 13.10
 (2016), p. 845.
 
-[3] J. A. Farrell, Y. Wang, S. J. Riesenfeld, et al. "Single-cell
+[3] A. M. Klein, L. Mazutis, I. Akartuna, et al. "Droplet barcoding for
+single-cell transcriptomics applied to embryonic stem cells". In:
+_Cell_ 161.5 (2015), pp. 1187-1201.
+
+[4] F. Paul, Y. Arkin, A. Giladi, et al. "Transcriptional heterogeneity
+and lineage commitment in myeloid progenitors". In: _Cell_ 163.7
+(2015), pp. 1663-1677.
+
+[5] J. A. Farrell, Y. Wang, S. J. Riesenfeld, et al. "Single-cell
 reconstruction of developmental trajectories during zebrafish
 embryogenesis". In: _Science_ 360.6392 (2018).
     </textarea>
