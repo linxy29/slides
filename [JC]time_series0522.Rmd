@@ -265,6 +265,12 @@ knitr::include_graphics('./image/JC0522/paper2res3.png')
 
 * combine with RNA velocity -> a new embedded space
 
+.pull-left[
+```{r, out.width='80%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/JC0522/paper2demo.png')
+```
+]
+
 ---
 
 class: center, middle
