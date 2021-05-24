@@ -1,5 +1,5 @@
 ---
-title: "First Year RPG Discussion"
+title: "Diffusion Map on Single-cell Time Series Data Analysis"
 #subtitle: "⚔<br/>with xaringan"
 author: "Xinyi Lin"
 institute: "Supervisor: Joshua Ho"
@@ -17,3 +17,31 @@ output:
 background diffusion matrix time-series data
 
 connection
+
+---
+
+# Haghverdi 2016: Results
+
+* Simulation study of robustness:
+
+  + 100 bootstrap data sets
+  
+  + Kendall-tau correlation of each two bootstrap data sets
+
+```{r, out.width='100%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/JC0522/paper1res.png')
+```
+
+---
+
+# References
+
+```{r, load_refs, echo=FALSE,message=FALSE}
+library(RefManageR)
+bib <- ReadBib("./bibFiles/JC0522.bib", check = FALSE)
+```
+
+```{r, print_refs, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
+print(bib, 
+  .opts = list(check.entries = FALSE, sorting = "none"))
+```
