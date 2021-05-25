@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Diffusion Map on Single-cell Time Series Data Analysis
 ### Xinyi Lin
 ### Supervisor: Joshua Ho
-### 2021/05/22 (updated: 2021-05-24)
+### 2021/05/22 (updated: 2021-05-25)
 
 ---
 
@@ -37,20 +37,6 @@ p.caption {
   + regularly repeating pattern
   
 &lt;img src="./image/JC0522/time_series.png" width="85%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Time Series Data
-
-* data collected at different points in time(day1, day2, day3, day7......)
-
-* some characteristics
-
-  + potential for correlation between observations
-  
-  + regularly repeating pattern
-  
-&lt;img src="./image/JC0522/time_series2.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -133,8 +119,10 @@ PCA: creating new uncorrelated variables that successively maximize variance
 
 euclidean distance &lt;-&gt; difussion distance
 
+euclidean distance: `\(d(p,q) = \sqrt{(p_1-q_1)^2+(p_2-q_2)^2 + ......}\)`
+
 .pull-left[
-&lt;img src="./image/JC0522/difussion4.svg" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/JC0522/difussion4.png" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -166,7 +154,7 @@ euclidean distance &lt;-&gt; difussion distance
 
 ---
 
-# Haghverdi 2016[2]: Model Design
+# Haghverdi 2016[2]: Model Design-DPT
 
 * use Gaussians kernel to build the transition matrix
 
@@ -200,7 +188,7 @@ euclidean distance &lt;-&gt; difussion distance
 
 ---
 
-# Farrell 2018[5]: Model Design
+# Farrell 2018[5]: Model Design-URD
 
 * use k-nearest-neighbor graph to build the transition matrix
 
@@ -259,21 +247,40 @@ class: center, middle
 
 
 
-[1] R. R. Coifman, S. Lafon, A. B. Lee, et al. "Geometric diffusions as a tool for harmonic analysis and structure
-definition of data: Diffusion maps". In: _Proceedings of the national academy of sciences_ 102.21 (2005), pp.
-7426-7431.
+[1] R. R. Coifman, S. Lafon, A. B. Lee, et al. "Geometric diffusions as
+a tool for harmonic analysis and structure definition of data:
+Diffusion maps". In: _Proceedings of the national academy of sciences_
+102.21 (2005), pp. 7426-7431.
 
-[2] L. Haghverdi, M. Büttner, F. A. Wolf, et al. "Diffusion pseudotime robustly reconstructs lineage branching". In:
-_Nature methods_ 13.10 (2016), p. 845.
+[2] L. Haghverdi, M. Büttner, F. A. Wolf, et al. "Diffusion pseudotime
+robustly reconstructs lineage branching". In: _Nature methods_ 13.10
+(2016), p. 845.
 
-[3] A. M. Klein, L. Mazutis, I. Akartuna, et al. "Droplet barcoding for single-cell transcriptomics applied to
-embryonic stem cells". In: _Cell_ 161.5 (2015), pp. 1187-1201.
+[3] A. M. Klein, L. Mazutis, I. Akartuna, et al. "Droplet barcoding for
+single-cell transcriptomics applied to embryonic stem cells". In:
+_Cell_ 161.5 (2015), pp. 1187-1201.
 
-[4] F. Paul, Y. Arkin, A. Giladi, et al. "Transcriptional heterogeneity and lineage commitment in myeloid progenitors".
-In: _Cell_ 163.7 (2015), pp. 1663-1677.
+[4] F. Paul, Y. Arkin, A. Giladi, et al. "Transcriptional heterogeneity
+and lineage commitment in myeloid progenitors". In: _Cell_ 163.7
+(2015), pp. 1663-1677.
 
-[5] J. A. Farrell, Y. Wang, S. J. Riesenfeld, et al. "Single-cell reconstruction of developmental trajectories during
-zebrafish embryogenesis". In: _Science_ 360.6392 (2018).
+[5] J. A. Farrell, Y. Wang, S. J. Riesenfeld, et al. "Single-cell
+reconstruction of developmental trajectories during zebrafish
+embryogenesis". In: _Science_ 360.6392 (2018).
+
+---
+
+# Time Series Data
+
+* data collected at different points in time(day1, day2, day3, day7......)
+
+* some characteristics
+
+  + potential for correlation between observations
+  
+  + regularly repeating pattern
+  
+&lt;img src="./image/JC0522/time_series2.png" width="100%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
