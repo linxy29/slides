@@ -1,0 +1,23 @@
+---
+title: "Projects Update"
+#subtitle: "⚔<br/>with xaringan"
+author: "Xinyi Lin"
+institute: "Supervisor: Joshua Ho"
+date: "2021/06/09 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, chocolate-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: inverse, center, middle
+
+# Giant Cell Tumor of Bone(GCTB)
+
+---
+
+# Recap
