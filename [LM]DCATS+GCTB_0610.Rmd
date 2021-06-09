@@ -183,6 +183,11 @@ In `DESCRIPTION` file:
   + packages listed are attached when this package is attached
   + functions can used directly through `fun()`
   
+* Suggests:
+
+  + this package can use these packages, but doesn’t require them
+  + these packages only are used in one/few functions
+  
 ---
 
 # Package Development
@@ -313,4 +318,8 @@ knitr::include_graphics('./image/LM0610/DCATS_test.png')
 knitr::include_graphics('./image/LM0610/DCATS_test2.png')
 ```
 
+---
 
+# Package Development
+
+[R Packages](https://r-pkgs.org/index.html)
