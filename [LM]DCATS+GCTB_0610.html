@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Projects Update
 ### Xinyi Lin
 ### Supervisor: Joshua Ho
-### 2021/06/09 (updated: 2021-06-09)
+### 2021/06/09 (updated: 2021-06-10)
 
 ---
 
@@ -98,11 +98,13 @@ Zhong, Leilei, et al. "Single cell transcriptomics identifies a unique adipose l
 
 ]
 
-&lt;br/&gt;
+* similarity between cluster 2 and lmp
+
+  +  maintaining marrow vasculature &amp; suppressing bone formation
 
 * original hypothesis: the mutation related to phenotype of different cell types -&gt; related to GCTB development
 
-* right now: analyze cells with/without mutation separately
+* current strategy: analyze cells with/without mutation separately
 
 ---
 
@@ -190,7 +192,7 @@ In `DESCRIPTION` file:
 
 (3) NAMESPACE
 
-&lt;img src="./image/LM0610/DCATS_namespace.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/LM0610/DCATS_namespace.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -210,11 +212,11 @@ In `DESCRIPTION` file:
 
 ---
 
-# Package Development(need to add fig here)
+# Package Development
 
 (4) R folder
 
-&lt;img src="./image/LM0610/DCATS_function.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/LM0610/DCATS_function2.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -238,11 +240,11 @@ In `DESCRIPTION` file:
 
 ---
 
-# Package Development(need to add fig here)
+# Package Development
 
 (5) man folder
 
-&lt;img src="./image/LM0610/DCATS_man.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="./image/LM0610/DCATS_data2.png" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -288,7 +290,50 @@ In `DESCRIPTION` file:
 
 # Package Development
 
-[R Packages](https://r-pkgs.org/index.html)
+* updated functions
+* cleaned unnecessary files
+* added example
+* added test file
+* added sample data
+* added documentation
+* repeat: test &lt;-&gt; debug
+
+more information related to package development: [R Packages](https://r-pkgs.org/index.html)
+
+---
+
+# New Function: dcats_GLM
+
+&lt;img src="./image/LM0610/DCATS_glm.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+## Thanks!
+
+---
+
+# Real World data: David 2018
+
+.pull-left[
+&lt;img src="./image/LM0610/DCATS_res.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+* 8 time points: 0-30 days
+
+* filtered out cell numbers lower than 10 in more than 2 time point
+
+* only glia is true positive
+
+* consider combining different cell types into a larger group
+]
+
+&lt;p style="font-family: times, serif; font-size:11pt; font-style:italic"&gt;
+Davie, Kristofer, et al. "A single-cell transcriptome atlas of the aging Drosophila brain." Cell 174.4 (2018): 982-998.
+&lt;/p&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

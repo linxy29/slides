@@ -104,11 +104,13 @@ Zhong, Leilei, et al. "Single cell transcriptomics identifies a unique adipose l
 
 ]
 
-<br/>
+* similarity between cluster 2 and lmp
+
+  +  maintaining marrow vasculature & suppressing bone formation
 
 * original hypothesis: the mutation related to phenotype of different cell types -> related to GCTB development
 
-* right now: analyze cells with/without mutation separately
+* current strategy: analyze cells with/without mutation separately
 
 ---
 
@@ -204,7 +206,7 @@ knitr::include_graphics('./image/LM0610/DCATS_discription.png')
 
 (3) NAMESPACE
 
-```{r, out.width='100%', fig.align='center', echo=FALSE}
+```{r, out.width='90%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/LM0610/DCATS_namespace.png')
 ```
 
@@ -230,12 +232,12 @@ knitr::include_graphics('./image/LM0610/DCATS_function.png')
 
 ---
 
-# Package Development(need to add fig here)
+# Package Development
 
 (4) R folder
 
-```{r, out.width='90%', fig.align='center', echo=FALSE}
-knitr::include_graphics('./image/LM0610/DCATS_function.png')
+```{r, out.width='70%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0610/DCATS_function2.png')
 ```
 
 ---
@@ -264,12 +266,12 @@ knitr::include_graphics('./image/LM0610/DCATS_man.png')
 
 ---
 
-# Package Development(need to add fig here)
+# Package Development
 
 (5) man folder
 
-```{r, out.width='90%', fig.align='center', echo=FALSE}
-knitr::include_graphics('./image/LM0610/DCATS_man.png')
+```{r, out.width='75%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0610/DCATS_data2.png')
 ```
 
 ---
@@ -322,4 +324,51 @@ knitr::include_graphics('./image/LM0610/DCATS_test2.png')
 
 # Package Development
 
-[R Packages](https://r-pkgs.org/index.html)
+* updated functions
+* cleaned unnecessary files
+* added example
+* added test file
+* added sample data
+* added documentation
+* repeat: test <-> debug
+
+more information related to package development: [R Packages](https://r-pkgs.org/index.html)
+
+---
+
+# New Function: dcats_GLM
+
+```{r, out.width='90%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0610/DCATS_glm.png')
+```
+
+---
+
+class: center, middle
+
+## Thanks!
+
+---
+
+# Real World data: David 2018
+
+.pull-left[
+```{r, out.width='90%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/LM0610/DCATS_res.png')
+```
+]
+
+.pull-right[
+
+* 8 time points: 0-30 days
+
+* filtered out cell numbers lower than 10 in more than 2 time point
+
+* only glia is true positive
+
+* consider combining different cell types into a larger group
+]
+
+<p style="font-family: times, serif; font-size:11pt; font-style:italic">
+Davie, Kristofer, et al. "A single-cell transcriptome atlas of the aging Drosophila brain." Cell 174.4 (2018): 982-998.
+</p>
