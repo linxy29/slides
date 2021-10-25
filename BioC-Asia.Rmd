@@ -1,0 +1,21 @@
+---
+title: 'DCATS: Differential composition analysis of single-cell data'
+author: "Xinyi Lin"
+institute: "The University of Hong Kong, Ho Lab"
+date: "2021/11/01"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, chocolate-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+background-image: ./image/hku.jpg
+background-position: top right
+background-size: 110px 120px
+layout: true
+
+---
