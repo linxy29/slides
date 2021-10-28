@@ -40,9 +40,9 @@ layout: true
 
 * Basic assumptions
 
-  + misclassification error exists
-
   + cell counts follow beta-binomial distribution
+
+  + misclassification error exists
 
 &lt;img src="./image/RPG_discussion/dcats_background.png" width="90%" style="display: block; margin: auto;" /&gt;
 
@@ -75,7 +75,11 @@ layout: true
     (1-a)/(K-1)  &amp;   (1-a)/(K-1) &amp; \dots &amp; a
 \end{bmatrix}`
 
+&lt;br/&gt;
+
 * KNN type: `\(m_{ij}\)` = % of cluster `\(i\)`'s neighborhoods `\(\in\)` cluster `\(j\)`
+
+&lt;br/&gt;
 
 * SVM type: 
 
@@ -256,7 +260,7 @@ print(head(Ren2021$designM, 10))
 
 # How to use DCATS
 
-* **Similarity Matrix (a K `\(\times\)` K matrix)**
+* **Misclassification Matrix (a K `\(\times\)` K matrix)**
 
 
 ```r
@@ -271,7 +275,7 @@ Haber2017$svm_mat
 
 # How to use DCATS
 
-* **Similarity Matrix**
+* **Misclassification Matrix**
 
 
 ```r
@@ -414,6 +418,17 @@ print(res$LRT_pvals)
 &lt;br/&gt;
 
 &lt;img src="./image/BioC_Asia/Fig2_E.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+&lt;font size="10"&gt;Thanks&lt;/font&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;font size="10"&gt;Q&amp;A&lt;/font&gt;
 
 ---
 

@@ -35,9 +35,9 @@ layout: true
 
 * Basic assumptions
 
-  + misclassification error exists
-
   + cell counts follow beta-binomial distribution
+
+  + misclassification error exists
 
 ```{r, out.width='90%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
@@ -76,7 +76,11 @@ knitr::include_graphics('./image/BioC_Asia/overall_label.png')
     (1-a)/(K-1)  &   (1-a)/(K-1) & \dots & a
 \end{bmatrix}
 
+<br/>
+
 * KNN type: $m_{ij}$ = % of cluster $i$'s neighborhoods $\in$ cluster $j$
+
+<br/>
 
 * SVM type: 
 
@@ -176,7 +180,7 @@ print(head(Ren2021$designM, 10))
 
 # How to use DCATS
 
-* **Similarity Matrix (a K $\times$ K matrix)**
+* **Misclassification Matrix (a K $\times$ K matrix)**
 
 ```{r, eval=FALSE}
 Haber2017$svm_mat
@@ -192,7 +196,7 @@ knitr::include_graphics('./image/BioC_Asia/svm_mat.png')
 
 # How to use DCATS
 
-* **Similarity Matrix**
+* **Misclassification Matrix**
 
 ```{r, eval=FALSE}
 data("Kang2017")
@@ -325,6 +329,17 @@ knitr::include_graphics('./image/BioC_Asia/Fig2_AD.png')
 ```{r, out.width='90%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/Fig2_E.png')
 ```
+
+---
+
+class: center, middle
+
+<font size="10">Thanks</font>
+<br/>
+<br/>
+<br/>
+<br/>
+<font size="10">Q&A</font>
 
 ---
 
