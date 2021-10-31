@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>DCATS: Differential composition analysis of single-cell data</title>
+    <title>DCATS: Differential Composition Analysis of Single-Cell data</title>
     <meta charset="utf-8" />
     <meta name="author" content="Xinyi Lin" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# DCATS: Differential composition analysis of single-cell data
+# DCATS: Differential Composition Analysis of Single-Cell data
 ### Xinyi Lin
 ### The University of Hong Kong, Ho Lab
 ### 2021/11/01
@@ -40,9 +40,9 @@ layout: true
 
 * Basic assumptions
 
-  + cell counts follow beta-binomial distribution
+  + Cell counts follow beta-binomial distribution
 
-  + misclassification error exists
+  + Misclassification error exists
 
 &lt;img src="./image/RPG_discussion/dcats_background.png" width="90%" style="display: block; margin: auto;" /&gt;
 
@@ -61,6 +61,21 @@ layout: true
 &lt;br/&gt;
 
 &lt;img src="./image/BioC_Asia/overall_label.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Usage of Miclassification Matrix[2]
+
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+
+
+&lt;img src="./image/BioC_Asia/simM.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;br/&gt;
+
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
@@ -87,21 +102,59 @@ layout: true
 
 ---
 
+# Method: Beta-binomial GLM
+
+For each cell type:
+
+.pull-left[
+
+* Cell count vector
+
+`$$\begin{align}
+    y &amp;= \begin{bmatrix}
+           x_{1} \\
+           x_{2} \\
+           \vdots \\
+           x_{m}
+         \end{bmatrix}
+  \end{align}$$`
+]
+
+.pull-right[
+
+* Design matrix
+
+`$$\begin{bmatrix}
+    x_{11} &amp; x_{12} &amp; \dots  &amp; x_{1n} \\
+    x_{21} &amp; x_{22} &amp; \dots  &amp; x_{2n} \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    x_{d1} &amp; x_{d2} &amp; \dots  &amp; x_{dn}
+\end{bmatrix}$$`
+]
+
+&lt;br/&gt;
+
+* With mean `\(\mu\)` of `\(y\)`, a beta-binomial GLM can be fitted as:  
+
+`$$ln(\frac{\mu}{1-\mu}) = \beta_0 + \beta_1 \times \mathbf x_1 + \beta_2 \times \mathbf x_2 ......$$`
+  
+---
+
 # Method: Models Selection
 
 * Type 1: Null model
 
-Model 0: `\(g(\bar y) = \beta_0\)`
+Model 0: `\(g(\mu) = \beta_0\)`
 
-Model 1: `\(g(\bar y) = \beta_0 + \beta_1*tested\_covariate\)`
+Model 1: `\(g(\mu) = \beta_0 + \beta_1*tested\_covariate\)`
 
 &lt;br/&gt;
 
 * Type 2: Full model
 
-Model 0: `\(g(\bar y) = \beta_0 + \beta*other\_covariates\)`
+Model 0: `\(g(\mu) = \beta_0 + \beta*other\_covariates\)`
 
-Model 1: `\(g(\bar y) = \beta_0 + \beta*other\_covariates + \beta_i*tested\_covariate\)`
+Model 1: `\(g(\mu) = \beta_0 + \beta*other\_covariates + \beta_i*tested\_covariate\)`
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -182,18 +235,17 @@ Model 1: `\(g(\bar y) = \beta_0 + \beta*other\_covariates + \beta_i*tested\_cova
 
    + `\(\phi\)` is estimated across all cell types before testing
    
-   + is given in each beta-binomial GLM for each cell type
+   + The estimated `\(\phi\)` is given in each beta-binomial GLM for each cell type
 
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Count Matrix**
 
 
 ```r
-library(DCATS)
 data("Haber2017")
 rbind(Haber2017$count_ctrl, Haber2017$count_Hpoly3)
 ```
@@ -210,13 +262,13 @@ rbind(Haber2017$count_ctrl, Haber2017$count_Hpoly3)
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Design Matrix**
 
 
 ```r
-sim_design = data.frame(condition = c("control", "control", "control", "control", "Hpoly3", "Hpoly3"))
+sim_design = data.frame(condition = c(rep("control", 4), rep("Hpoly3", 2)))
 print(sim_design)
 ```
 
@@ -232,7 +284,7 @@ print(sim_design)
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Design Matrix**
 
@@ -258,22 +310,20 @@ print(head(Ren2021$designM, 10))
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Misclassification Matrix (a K `\(\times\)` K matrix)**
 
-
-```r
-Haber2017$svm_mat
-```
-
 &lt;br/&gt;
 
-&lt;img src="./image/BioC_Asia/svm_mat.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+&lt;img src="./image/BioC_Asia/svm_mat.png" width="90%" style="display: block; margin: auto;" /&gt;
+
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Misclassification Matrix**
 
@@ -295,7 +345,7 @@ svm_mat = svm_simMat(dataframe = Kang2017$svmDF)
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Main Function**
 
@@ -344,13 +394,12 @@ res = dcats_GLM(sim_count, sim_design, similarity_mat = simil_mat)
 ## full model, flexible phi
 res = dcats_GLM(sim_count, sim_design, simil_mat, base_model='FULL')
 ## null model, fixed phi
-phi = getPhi(sim_count, sim_design)
 res = dcats_GLM(sim_count, sim_design, simil_mat, fix_phi = phi)
 ```
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Main Function**
 
@@ -391,11 +440,27 @@ print(res$LRT_pvals)
 
 # Results: Simulation
 
+* **Theoretical Simulation**
+
+&lt;img src="./image/BioC_Asia/supFig1A.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Results: Simulation
+
 * **Simulation with Expression Info**
 
 &lt;br/&gt;
 
 &lt;img src="./image/BioC_Asia/Fig1_B.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Results: Simulation
+
+* **Simulation with Expression Info**
+
+&lt;img src="./image/BioC_Asia/supFig1B.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -407,13 +472,31 @@ print(res$LRT_pvals)
 
 ---
 
-# Results: Real World Data
+# Results: Real World Data[2]
 
-&lt;img src="./image/BioC_Asia/Fig2_AD.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+
+&lt;img src="./image/BioC_Asia/Fig2_A.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;br/&gt;
+
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
-# Results: Real World Data
+# Results: Real World Data[3]
+
+&lt;br/&gt;
+
+&lt;img src="./image/BioC_Asia/Fig2_BD.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+E, Enterocyte; TA, transit amplifying; TAE, TA.Early; EP, Enterocyte.Progenitor; Gob, Goblet
+
+---
+
+# Results: Real World Data[4]
 
 &lt;br/&gt;
 

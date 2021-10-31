@@ -1,5 +1,5 @@
 ---
-title: 'DCATS: Differential composition analysis of single-cell data'
+title: 'DCATS: Differential Composition Analysis of Single-Cell data'
 author: "Xinyi Lin"
 institute: "The University of Hong Kong, Ho Lab"
 date: "2021/11/01"
@@ -35,9 +35,9 @@ layout: true
 
 * Basic assumptions
 
-  + cell counts follow beta-binomial distribution
+  + Cell counts follow beta-binomial distribution
 
-  + misclassification error exists
+  + Misclassification error exists
 
 ```{r, out.width='90%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
@@ -62,6 +62,23 @@ knitr::include_graphics('./image/LM0510/overall.png')
 ```{r, out.width='100%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/overall_label.png')
 ```
+
+---
+
+# Usage of Miclassification Matrix[2]
+
+<br/>
+<br/>
+<br/>
+
+
+```{r, out.width='100%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/simM.png')
+```
+
+<br/>
+
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
@@ -90,21 +107,59 @@ knitr::include_graphics('./image/LM0510/5foldCV.png')
 
 ---
 
+# Method: Beta-binomial GLM
+
+For each cell type:
+
+.pull-left[
+
+* Cell count vector
+
+$$\begin{align}
+    y &= \begin{bmatrix}
+           x_{1} \\
+           x_{2} \\
+           \vdots \\
+           x_{m}
+         \end{bmatrix}
+  \end{align}$$
+]
+
+.pull-right[
+
+* Design matrix
+
+$$\begin{bmatrix}
+    x_{11} & x_{12} & \dots  & x_{1n} \\
+    x_{21} & x_{22} & \dots  & x_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    x_{d1} & x_{d2} & \dots  & x_{dn}
+\end{bmatrix}$$
+]
+
+<br/>
+
+* With mean $\mu$ of $y$, a beta-binomial GLM can be fitted as:  
+
+$$ln(\frac{\mu}{1-\mu}) = \beta_0 + \beta_1 \times \mathbf x_1 + \beta_2 \times \mathbf x_2 ......$$
+  
+---
+
 # Method: Models Selection
 
 * Type 1: Null model
 
-Model 0: $g(\bar y) = \beta_0$
+Model 0: $g(\mu) = \beta_0$
 
-Model 1: $g(\bar y) = \beta_0 + \beta_1*tested\_covariate$
+Model 1: $g(\mu) = \beta_0 + \beta_1*tested\_covariate$
 
 <br/>
 
 * Type 2: Full model
 
-Model 0: $g(\bar y) = \beta_0 + \beta*other\_covariates$
+Model 0: $g(\mu) = \beta_0 + \beta*other\_covariates$
 
-Model 1: $g(\bar y) = \beta_0 + \beta*other\_covariates + \beta_i*tested\_covariate$
+Model 1: $g(\mu) = \beta_0 + \beta*other\_covariates + \beta_i*tested\_covariate$
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(DCATS)
@@ -139,35 +194,34 @@ $$E(Y|n,\pi,\phi) = n\pi, Var(Y|n,\pi,\phi) = n\pi(1-\pi)[1+(n-1)\times\phi]$$
 
    + $\phi$ is estimated across all cell types before testing
    
-   + is given in each beta-binomial GLM for each cell type
+   + The estimated $\phi$ is given in each beta-binomial GLM for each cell type
 
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Count Matrix**
 
 ```{r}
-library(DCATS)
 data("Haber2017")
 rbind(Haber2017$count_ctrl, Haber2017$count_Hpoly3)
 ```
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Design Matrix**
 
 ```{r}
-sim_design = data.frame(condition = c("control", "control", "control", "control", "Hpoly3", "Hpoly3"))
+sim_design = data.frame(condition = c(rep("control", 4), rep("Hpoly3", 2)))
 print(sim_design)
 ```
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Design Matrix**
 
@@ -178,23 +232,35 @@ print(head(Ren2021$designM, 10))
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Misclassification Matrix (a K $\times$ K matrix)**
 
-```{r, eval=FALSE}
-Haber2017$svm_mat
-```
-
 <br/>
 
-```{r, out.width='100%', fig.align='center',echo=FALSE}
+```{r, out.width = '60%', fig.align='center',echo=FALSE, eval=FALSE}
+Haber2017$svm_mat %>%
+  as.data.frame() %>% 
+  ggplot(aes(Var2, Var1)) +
+    geom_tile(aes(fill = Freq)) + 
+    geom_text(aes(label = round(Freq, 3))) +
+    scale_fill_gradient(low = "white", high = "red", limits = c(0,1)) + 
+  theme_classic() +
+  theme(legend.title = element_blank(),
+        axis.title = element_blank(),
+        axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=0.5),
+        axis.text=element_text(size=12))
+ggsave("./image/BioC_Asia/svm_mat.png", bg = "transparent", width = 8, height = 5)
+```
+
+```{r, out.width='90%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/svm_mat.png')
 ```
 
+
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Misclassification Matrix**
 
@@ -215,7 +281,7 @@ svm_mat = svm_simMat(dataframe = Kang2017$svmDF)
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Main Function**
 
@@ -251,13 +317,12 @@ res = dcats_GLM(sim_count, sim_design, similarity_mat = simil_mat)
 ## full model, flexible phi
 res = dcats_GLM(sim_count, sim_design, simil_mat, base_model='FULL')
 ## null model, fixed phi
-phi = getPhi(sim_count, sim_design)
 res = dcats_GLM(sim_count, sim_design, simil_mat, fix_phi = phi)
 ```
 
 ---
 
-# How to use DCATS
+# How to Use DCATS
 
 * **Main Function**
 
@@ -294,12 +359,32 @@ knitr::include_graphics('./image/BioC_Asia/Fig1_A.png')
 
 # Results: Simulation
 
+* **Theoretical Simulation**
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/supFig1A.png')
+```
+
+---
+
+# Results: Simulation
+
 * **Simulation with Expression Info**
 
 <br/>
 
 ```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/Fig1_B.png')
+```
+
+---
+
+# Results: Simulation
+
+* **Simulation with Expression Info**
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/supFig1B.png')
 ```
 
 ---
@@ -314,15 +399,35 @@ knitr::include_graphics('./image/BioC_Asia/Fig1_C.png')
 
 ---
 
-# Results: Real World Data
+# Results: Real World Data[2]
 
-```{r, out.width='75%', fig.align='center',echo=FALSE}
-knitr::include_graphics('./image/BioC_Asia/Fig2_AD.png')
+<br/>
+<br/>
+<br/>
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/Fig2_A.png')
 ```
+
+<br/>
+
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
-# Results: Real World Data
+# Results: Real World Data[3]
+
+<br/>
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/Fig2_BD.png')
+```
+
+E, Enterocyte; TA, transit amplifying; TAE, TA.Early; EP, Enterocyte.Progenitor; Gob, Goblet
+
+---
+
+# Results: Real World Data[4]
 
 <br/>
 
