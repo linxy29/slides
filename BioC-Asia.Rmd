@@ -37,12 +37,16 @@ layout: true
 
   + Cell counts follow beta-binomial distribution
 
-  + Misclassification error exists
+  + Misclassification error exists[2]
 
-```{r, out.width='90%', fig.align='center',echo=FALSE}
-knitr::include_graphics('./image/RPG_discussion/dcats_background.png')
+
+```{r, out.width='90%', fig.align='center', echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/simM.png')
 ```
-
+<br/>
+<small>
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
+<small>
 ---
 
 # Workflow
@@ -62,23 +66,6 @@ knitr::include_graphics('./image/LM0510/overall.png')
 ```{r, out.width='100%', fig.align='center', echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/overall_label.png')
 ```
-
----
-
-# Usage of Miclassification Matrix[2]
-
-<br/>
-<br/>
-<br/>
-
-
-```{r, out.width='100%', fig.align='center', echo=FALSE}
-knitr::include_graphics('./image/BioC_Asia/simM.png')
-```
-
-<br/>
-
-cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
@@ -117,10 +104,10 @@ For each cell type:
 
 $$\begin{align}
     y &= \begin{bmatrix}
-           x_{1} \\
-           x_{2} \\
+           y_{1} \\
+           y_{2} \\
            \vdots \\
-           x_{m}
+           y_{m}
          \end{bmatrix}
   \end{align}$$
 ]
@@ -133,7 +120,7 @@ $$\begin{bmatrix}
     x_{11} & x_{12} & \dots  & x_{1n} \\
     x_{21} & x_{22} & \dots  & x_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
-    x_{d1} & x_{d2} & \dots  & x_{dn}
+    x_{m1} & x_{m2} & \dots  & x_{mn}
 \end{bmatrix}$$
 ]
 
@@ -317,6 +304,7 @@ res = dcats_GLM(sim_count, sim_design, similarity_mat = simil_mat)
 ## full model, flexible phi
 res = dcats_GLM(sim_count, sim_design, simil_mat, base_model='FULL')
 ## null model, fixed phi
+phi = getPhi(sim_count, sim_design)
 res = dcats_GLM(sim_count, sim_design, simil_mat, fix_phi = phi)
 ```
 
@@ -353,16 +341,6 @@ knitr::include_graphics('./image/LM0510/dcats_simAll.png')
 
 ```{r, out.width='100%', fig.align='center',echo=FALSE}
 knitr::include_graphics('./image/BioC_Asia/Fig1_A.png')
-```
-
----
-
-# Results: Simulation
-
-* **Theoretical Simulation**
-
-```{r, out.width='100%', fig.align='center',echo=FALSE}
-knitr::include_graphics('./image/BioC_Asia/supFig1A.png')
 ```
 
 ---
@@ -458,5 +436,15 @@ bib <- ReadBib("./bibFiles/BioC_Asia.bib", check = FALSE)
 ```{r, print_refs, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 print(bib, 
   .opts = list(check.entries = FALSE, sorting = "none"))
+```
+
+---
+
+# Results: Simulation
+
+* **Theoretical Simulation**
+
+```{r, out.width='100%', fig.align='center',echo=FALSE}
+knitr::include_graphics('./image/BioC_Asia/supFig1A.png')
 ```
 

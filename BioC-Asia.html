@@ -42,10 +42,14 @@ layout: true
 
   + Cell counts follow beta-binomial distribution
 
-  + Misclassification error exists
+  + Misclassification error exists[2]
 
-&lt;img src="./image/RPG_discussion/dcats_background.png" width="90%" style="display: block; margin: auto;" /&gt;
 
+&lt;img src="./image/BioC_Asia/simM.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;br/&gt;
+&lt;small&gt;
+cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
+&lt;small&gt;
 ---
 
 # Workflow
@@ -61,21 +65,6 @@ layout: true
 &lt;br/&gt;
 
 &lt;img src="./image/BioC_Asia/overall_label.png" width="100%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Usage of Miclassification Matrix[2]
-
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-
-
-&lt;img src="./image/BioC_Asia/simM.png" width="100%" style="display: block; margin: auto;" /&gt;
-
-&lt;br/&gt;
-
-cM, CD14+CD16– monocytes; ncM, CD14+CD16+ monocytes; DC, dendritic cells; Mkc, megakaryocytes; Th, CD4+ T cells; B, B cells; Tc, CD8+ T cells; NK, natural killer cells
 
 ---
 
@@ -112,10 +101,10 @@ For each cell type:
 
 `$$\begin{align}
     y &amp;= \begin{bmatrix}
-           x_{1} \\
-           x_{2} \\
+           y_{1} \\
+           y_{2} \\
            \vdots \\
-           x_{m}
+           y_{m}
          \end{bmatrix}
   \end{align}$$`
 ]
@@ -128,7 +117,7 @@ For each cell type:
     x_{11} &amp; x_{12} &amp; \dots  &amp; x_{1n} \\
     x_{21} &amp; x_{22} &amp; \dots  &amp; x_{2n} \\
     \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-    x_{d1} &amp; x_{d2} &amp; \dots  &amp; x_{dn}
+    x_{m1} &amp; x_{m2} &amp; \dots  &amp; x_{mn}
 \end{bmatrix}$$`
 ]
 
@@ -394,6 +383,7 @@ res = dcats_GLM(sim_count, sim_design, similarity_mat = simil_mat)
 ## full model, flexible phi
 res = dcats_GLM(sim_count, sim_design, simil_mat, base_model='FULL')
 ## null model, fixed phi
+phi = getPhi(sim_count, sim_design)
 res = dcats_GLM(sim_count, sim_design, simil_mat, fix_phi = phi)
 ```
 
@@ -435,14 +425,6 @@ print(res$LRT_pvals)
 &lt;br/&gt;
 
 &lt;img src="./image/BioC_Asia/Fig1_A.png" width="100%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Results: Simulation
-
-* **Theoretical Simulation**
-
-&lt;img src="./image/BioC_Asia/supFig1A.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -534,6 +516,14 @@ the small intestinal epithelium". In: _Nature_ 551.7680 (2017), pp.
 [4] X. Ren, W. Wen, X. Fan, et al. "COVID-19 immune features revealed
 by a large-scale single-cell transcriptome atlas". In: _Cell_ 184.7
 (2021), pp. 1895-1913.
+
+---
+
+# Results: Simulation
+
+* **Theoretical Simulation**
+
+&lt;img src="./image/BioC_Asia/supFig1A.png" width="100%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
