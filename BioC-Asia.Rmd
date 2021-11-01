@@ -415,14 +415,22 @@ knitr::include_graphics('./image/BioC_Asia/Fig2_E.png')
 
 ---
 
-class: center, middle
+# Acknowledgments
 
-<font size="10">Thanks</font>
+Joshua Ho Lab
+
+Weizhong Zheng
+
+Arron Kwok
+
+Junyi Chen
+
+All lab members
 <br/>
 <br/>
-<br/>
-<br/>
-<font size="10">Q&A</font>
+Yuanhua Huang Lab
+
+All lab members
 
 ---
 
